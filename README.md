@@ -23,8 +23,8 @@ Cyclistic offers three types of bikes and two types of riders: **casual** and **
 
 The question is:  
 - > **How do annual members and casual riders use Cyclistic differently?**
-- > **Can we identify casual users who ride frequently enough to benefit from membership?**
-- > **Are there any behavioral trends that indicate a casual user might become a member?**
+- > **Why would casual riders buy Cyclistic annual memberships?**
+- > **How can Cyclistic use digital media to influence casual riders to become members?**
 ---
 
 ## 🎯 Business Task
