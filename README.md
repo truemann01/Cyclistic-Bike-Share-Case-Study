@@ -188,9 +188,9 @@ I performed exploratory data analysis (EDA) on each quarterly dataset to identif
 
 After cleaning and merging all quarterly datasets, I conducted a comprehensive full-year analysis to uncover deeper behavioral insights. This included average ride time, peak usage periods, bike type trends, and usage differences between casual riders and members across all of 2024.
 
-- cyclistic_full_Year.Trip_data_full_Year
-
 🔗 [Click here to view the SQL script for Full-Year EDA](scripts/)
+
+- cyclistic_full_Year.Trip_data_full_Year
 
 ## Conclusion 
 This project pushed me to not only clean and organize messy datasets, but also navigate schema challenges in BigQuery, research real-time fixes, and build a full SQL-based analysis pipeline from scratch.
