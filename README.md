@@ -196,5 +196,11 @@ After cleaning and merging all quarterly datasets, I conducted a comprehensive f
 This project pushed me to not only clean and organize messy datasets, but also navigate schema challenges in BigQuery, research real-time fixes, and build a full SQL-based analysis pipeline from scratch.
 
 Next: Building compelling dashboards and storytelling from this clean data foundation.
-I'm open for collaborations, 
+I'm open for collaborations. 
+
+
+## 🚀 Thanks for reading!
+Want to connect or collaborate? Let’s chat on <a href="https://www.linkedin.com/in/anderson-igbah?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">LinkedIn</a> 
+
+
 
