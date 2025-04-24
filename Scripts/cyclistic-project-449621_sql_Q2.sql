@@ -290,18 +290,3 @@ ORDER BY
         -- casual DESC
 
 
--- Location data
--- Defining MIN and MAX values for latitude and longitude
-
-SELECT  
-        MAX(start_lat) AS start_lat_max,
-        MIN(start_lat) AS start_lat_min,
-        MAX(start_lng) AS start_lng_max,
-        MIN(start_lng) AS start_lng_min,
-        MAX(end_lat) AS end_lat_max,
-        MIN(end_lat) AS end_lat_min,
-        MAX(end_lng) AS end_lng_max,
-        MIN(end_lng) AS end_lng_min
-FROM
-        `cyclistic_Q2.quarterly_Q2`;
-
