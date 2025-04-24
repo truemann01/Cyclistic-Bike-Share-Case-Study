@@ -176,7 +176,7 @@ SELECT * FROM cyclistic_data_12.cyclistic_data_12_2024;
 
 I performed exploratory data analysis (EDA) on each quarterly dataset to identify trends in ride length, usage patterns by day of the week, bike type preferences, and seasonal behavior differences between casual riders and members.
 
-🔗 [Click here to view the SQL script for Quarterly EDA](scripts/quarterly_eda.sql)
+🔗 [Click here to view the SQL script for Quarterly EDA](scripts/)
 
 - Quarterly_Q1
 - Quarterly_Q2
@@ -190,7 +190,7 @@ After cleaning and merging all quarterly datasets, I conducted a comprehensive f
 
 - cyclistic_full_Year.Trip_data_full_Year
 
-🔗 [Click here to view the SQL script for Full-Year EDA](scripts/full_year_eda.sql)
+🔗 [Click here to view the SQL script for Full-Year EDA](scripts/)
 
 ## Conclusion 
 This project pushed me to not only clean and organize messy datasets, but also navigate schema challenges in BigQuery, research real-time fixes, and build a full SQL-based analysis pipeline from scratch.
