@@ -22,9 +22,9 @@ You are a data analyst at Cyclistic, a bike-share company that operates in Chica
 Cyclistic offers three types of bikes and two types of riders: **casual** and **members**. While annual members generate more predictable revenue, casual riders represent a large untapped opportunity.
 
 The question is:  
-> **How do annual members and casual riders use Cyclistic differently?**
-> **Can we identify casual users who ride frequently enough to benefit from membership?**
-> **Are there any behavioral trends that indicate a casual user might become a member?**
+- > **How do annual members and casual riders use Cyclistic differently?**
+- > **Can we identify casual users who ride frequently enough to benefit from membership?**
+- > **Are there any behavioral trends that indicate a casual user might become a member?**
 ---
 
 ## 🎯 Business Task
