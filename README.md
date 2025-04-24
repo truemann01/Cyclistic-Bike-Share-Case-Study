@@ -3,13 +3,17 @@
 
 ## 🧭 Overview
 
-This case study analyzes the 12-month ride history of Cyclistic, a fictional bike-share company based in Chicago. The objective is to uncover insights into user behavior and provide data-driven recommendations to help convert casual riders into annual members.
+This case study analyzes the 12-month ride history of Cyclistic, a fictional bike-share company based in Chicago. Cyclistic’s long-term goal is to increase annual memberships by converting more casual riders into loyal, paying members. This case study documents my end-to-end data journey using 12 months of historical ride data from 2024. From manual cleanup in Excel to building a cloud-based data pipeline in Google BigQuery, this project was a hands-on experience in real-world data wrangling and analysis..
 
 ---
 
+## 💡 Why I Loved This Project
+
+Working with data brings me joy — but more importantly, being able to transform raw data into **actionable insights** is what truly excites me. This project allowed me to not only apply my SQL and analytical skills but also troubleshoot data quality issues and build a pipeline from scratch.
+
 ## 📖 Scenario
 
-You are a junior data analyst at Cyclistic, a bike-share company that operates in Chicago. The director of marketing believes that maximizing annual memberships is key to long-term profitability. She has tasked your team with understanding how casual riders use Cyclistic compared to members — and using this insight to inform a targeted marketing campaign.
+You are a data analyst at Cyclistic, a bike-share company that operates in Chicago. The director of marketing believes that maximizing annual memberships is key to long-term profitability. She has tasked your team with understanding how casual riders use Cyclistic compared to members — and using this insight to inform a targeted marketing campaign.
 
 ---
 
@@ -19,7 +23,8 @@ Cyclistic offers three types of bikes and two types of riders: **casual** and **
 
 The question is:  
 > **How do annual members and casual riders use Cyclistic differently?**
-
+> **Can we identify casual users who ride frequently enough to benefit from membership?**
+> **Are there any behavioral trends that indicate a casual user might become a member?**
 ---
 
 ## 🎯 Business Task
@@ -50,20 +55,53 @@ Each file includes:
 - Opened each `.csv` in Excel and reviewed column consistency.
 - Reformatted date/time fields to ISO standard.
 - Checked for obvious nulls and anomalies.
+- Afterward, I:
+- Reformatted date columns to ISO standard
+- Cleaned nulls
+- Added new calculated fields for deeper insights:
+  - `ride_length`
+  - `ride_date`
+  - `day_of_week`
+  - `ride_month`
+  - `ride_year`
+  - `ride_start_time`
+  - `ride_end_time`
+  - `ride_distance_km`
+
 - Saved each file as `.xlsx`, then converted back to `.csv` for BigQuery compatibility.
 
----
 
-## ☁️ Further Cleaning in Google Cloud Storage + BigQuery
+### Issue: `ride_length` calculation errors
+The formula `D2 - C2` was generating values above 24 hours, e.g. `25:09:23`.  
+To fix this in Excel, I used:
 
-- Uploaded all 12 `.csv` files to a **GCS bucket**.
-- Imported each file as a separate table into **Google BigQuery**.
-- Standardized schema using `SAFE_CAST()` and manual templates.
-- Created new calculated columns:
-  - `ride_length` = duration in seconds
-  - `ride_date`, `ride_month`, `ride_year`, `day_of_week`
-  - `ride_start_time`, `ride_end_time`
-  - `ride_distance_km` using haversine formula
+```excel
+=IF(D2 > C2, D2 - C2, C2 - D2)
+
+```
+
+
+
+## ☁️ Further cleaning and EDA on Google cloud(BigQuery)
+Due to the size of the full-year dataset, I migrated all 12 files into Google Cloud Storage and created a bucket named Connect_ai. I converted all files back to .csv for BigQuery compatibility.
+
+BigQuery Setup:
+Created a project: cyclistic-project-449621
+
+Created monthly Dataset and tables: 
+- cyclistic_data_01_2024.csv
+- cyclistic_data_02_2024.csv
+- cyclistic_data_03_2024.csv
+- cyclistic_data_04_2024.csv
+- cyclistic_data_05_2024.csv
+- cyclistic_data_06_2024.csv
+- cyclistic_data_07_2024.csv
+- cyclistic_data_08_2024.csv
+- cyclistic_data_09_2024.csv
+- cyclistic_data_10_2024.csv
+- cyclistic_data_11_2024.csv
+- cyclistic_data_12_2024.csv
+
 
 ### ⚠ Issues Encountered
 | Problem | Fix |
@@ -73,6 +111,27 @@ Each file includes:
 | Missing coordinates | Rows excluded from distance-based analysis |
 | Schema errors | Used custom schema templates and `SAFE_CAST` |
 
+## Some SQL statements used in fixing issues encountered while working on the dataset before mergering it quarterly:
+which had to do some research on the Big query documentation : (<https://cloud.google.com/bigquery/docs/managing-table-schemas#change_a_columns_data_type>)
+
+```
+-- Cast a column to change the data type.
+SELECT ride_id, rideable_type, started_at,ended_at,start_station_name, start_station_id,end_station_name, End_Station_ID,start_lat, start_lng, end_lat, end_lng, member_casual, CAST(ride_length AS string) AS ride_length, Day_of_week, ride_date, ride_distance_km, ride_Month, ride_Year, ride_start_time, ride_end_time,
+FROM cyclistic_data_02.cyclistic_data_02_2024;
+
+-- Handled Invalid time string
+SAFE_CAST(ride_length AS TIME)
+
+-- when ride_length was NULL, it impacted ride_distance_km.
+UPDATE cyclistic_Q2.quarterly_Q2
+SET ride_distance_km = NULL
+WHERE ride_length IS NULL;
+
+-- Repeated for Q3 and Q4
+
+
+
+```
 ---
 
 ## 🧩 Joining Tables Quarterly
@@ -111,3 +170,31 @@ UNION ALL
 SELECT * FROM cyclistic_data_11.cyclistic_data_11_2024
 UNION ALL
 SELECT * FROM cyclistic_data_12.cyclistic_data_12_2024;
+
+```
+## 📊 Quarterly EDA Script
+
+I performed exploratory data analysis (EDA) on each quarterly dataset to identify trends in ride length, usage patterns by day of the week, bike type preferences, and seasonal behavior differences between casual riders and members.
+
+🔗 [Click here to view the SQL script for Quarterly EDA](scripts/quarterly_eda.sql)
+
+- Quarterly_Q1
+- Quarterly_Q2
+- Quarterly_Q3
+- Quarterly_Q4
+
+
+## 📈 Full-Year EDA Script
+
+After cleaning and merging all quarterly datasets, I conducted a comprehensive full-year analysis to uncover deeper behavioral insights. This included average ride time, peak usage periods, bike type trends, and usage differences between casual riders and members across all of 2024.
+
+- cyclistic_full_Year.Trip_data_full_Year
+
+🔗 [Click here to view the SQL script for Full-Year EDA](scripts/full_year_eda.sql)
+
+## Conclusion 
+This project pushed me to not only clean and organize messy datasets, but also navigate schema challenges in BigQuery, research real-time fixes, and build a full SQL-based analysis pipeline from scratch.
+
+Next: Building compelling dashboards and storytelling from this clean data foundation.
+I'm open for collaborations, 
+
