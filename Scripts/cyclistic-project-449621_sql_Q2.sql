@@ -303,5 +303,5 @@ SELECT
         MAX(end_lng) AS end_lng_max,
         MIN(end_lng) AS end_lng_min
 FROM
-        `cyclistic_Q2.quarterly_Q2`
+        `cyclistic_Q2.quarterly_Q2`;
 
