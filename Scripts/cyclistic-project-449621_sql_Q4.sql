@@ -1,9 +1,9 @@
 /*
-Cyclistic Case Study: Quarterly Data Exploration, 2024_Q1
+Cyclistic Case Study: Quarterly Data Exploration, 2024_Q4
 Windows Functions, Aggregate Functions, Converting Data Types
 */
 
--- Select columns from Q1 data to preview
+-- Select columns from Q4 data to preview
 
 SELECT  
         ride_id,
@@ -14,7 +14,7 @@ SELECT
         start_station_name,
         end_station_name,
         member_casual
-FROM   `cyclistic_Q1.quarterly_Q1`
+FROM    `cyclistic_Q4.quarterly_Q4`
 
 order by ride_id DESC;
 
@@ -34,7 +34,7 @@ FROM
                 COUNT(ride_id) AS TotalTrips,
                 COUNTIF(member_casual = 'member') AS TotalMemberTrips,
                 COUNTIF(member_casual = 'casual') AS TotalCasualTrips
-        FROM  `cyclistic_Q1.quarterly_Q1`
+        FROM   `cyclistic_Q4.quarterly_Q4`
         );
 
 
@@ -47,13 +47,13 @@ SELECT
         SELECT 
                 AVG(ride_length)
         FROM 
-                `cyclistic_Q1.quarterly_Q1`
+                 `cyclistic_Q4.quarterly_Q4`
         ) AS AvgRideLength_Overall,
         (
         SELECT 
                 AVG(ride_length) 
         FROM 
-                `cyclistic_Q1.quarterly_Q1`
+                `cyclistic_Q4.quarterly_Q4`
         WHERE 
                 member_casual = 'member'
         ) AS AvgRideLength_Member,
@@ -61,7 +61,7 @@ SELECT
         SELECT 
                 AVG(ride_length) 
         FROM 
-                `cyclistic_Q1.quarterly_Q1`
+                 `cyclistic_Q4.quarterly_Q4`
         WHERE 
                 member_casual = 'casual'
         ) AS AvgRideLength_Casual;
@@ -74,7 +74,7 @@ SELECT
         member_casual,
         MAX(ride_length) AS ride_length_MAX
 FROM 
-        `cyclistic_Q1.quarterly_Q1`
+        `cyclistic_Q4.quarterly_Q4`
 GROUP BY 
         member_casual
 ORDER BY 
@@ -86,7 +86,7 @@ SELECT
         member_casual,
         ride_length
 FROM 
-        `cyclistic_Q1.quarterly_Q1`
+         `cyclistic_Q4.quarterly_Q4`
 
 WHERE  
        member_casual = 'casual'
@@ -111,7 +111,7 @@ FROM
                 ride_length,
                 PERCENTILE_DISC(ride_length, 0.5 IGNORE NULLS) OVER(PARTITION BY member_casual) AS  median_ride_length
         FROM 
-                `cyclistic_Q1.quarterly_Q1`
+                 `cyclistic_Q4.quarterly_Q4`
         )
 ORDER BY 
         median_ride_length DESC LIMIT 2;
@@ -128,7 +128,7 @@ FROM
         SELECT
                 DISTINCT member_casual, day_of_week, ROW_NUMBER() OVER (PARTITION BY member_casual ORDER BY COUNT(day_of_week) DESC) rn
         FROM
-                `cyclistic_Q1.quarterly_Q1`
+                `cyclistic_Q4.quarterly_Q4`
         GROUP BY
                 member_casual, day_of_week
         )
@@ -150,7 +150,7 @@ FROM
                 day_of_week,
                 ride_length
         FROM
-                `cyclistic_Q1.quarterly_Q1`
+                 `cyclistic_Q4.quarterly_Q4`
         )
 GROUP BY
         day_of_week
@@ -171,7 +171,7 @@ FROM
                 ride_length,
                 PERCENTILE_DISC(ride_length, 0.5 IGNORE NULLS) OVER(PARTITION BY day_of_week) AS  median_ride_length
         FROM 
-                `cyclistic_Q1.quarterly_Q1`
+                 `cyclistic_Q4.quarterly_Q4`
         )
 ORDER BY 
         median_ride_length DESC LIMIT 7;
@@ -190,7 +190,7 @@ FROM
                 day_of_week,
                 ride_length
         FROM
-                `cyclistic_Q1.quarterly_Q1`
+                 `cyclistic_Q4.quarterly_Q4`
         )
 GROUP BY
         day_of_week,
@@ -214,7 +214,7 @@ FROM
                 ride_length,
                 PERCENTILE_DISC(ride_length, 0.5 IGNORE NULLS) OVER(PARTITION BY day_of_week) AS  median_ride_length
         FROM 
-                `cyclistic_Q1.quarterly_Q1`
+                `cyclistic_Q4.quarterly_Q4`
         WHERE
                 member_casual = 'member'
                 -- member_casual = 'casual'
@@ -230,7 +230,7 @@ SELECT
         day_of_week,
         COUNT(DISTINCT ride_id) AS TotalTrips
 FROM
-        `cyclistic_Q1.quarterly_Q1`
+         `cyclistic_Q4.quarterly_Q4`
 GROUP BY 
         day_of_week
 ORDER BY 
@@ -246,7 +246,7 @@ SELECT
         SUM(CASE WHEN member_casual = 'member' THEN 1 ELSE 0 END) AS MemberTrips,
         SUM(CASE WHEN member_casual = 'casual' THEN 1 ELSE 0 END) AS CasualTrips
 FROM 
-        `cyclistic_Q1.quarterly_Q1`
+        `cyclistic_Q4.quarterly_Q4`
 GROUP BY 
         1
 ORDER BY 
@@ -256,7 +256,7 @@ SELECT
         day_of_week,
         COUNT(DISTINCT ride_id) AS TotalTrips
 FROM
-        `cyclistic_Q1.quarterly_Q1`
+        `cyclistic_Q4.quarterly_Q4`
 WHERE 
         member_casual = 'member'
         -- member_casual = 'casual'
@@ -281,7 +281,7 @@ SELECT
             CASE WHEN member_casual = 'casual' AND start_station_name = start_station_name THEN 1 ELSE 0 END
             ) AS casual
 FROM 
-        `cyclistic_Q1.quarterly_Q1`
+        `cyclistic_Q4.quarterly_Q4`
 GROUP BY 
         start_station_name
 ORDER BY 
@@ -290,18 +290,4 @@ ORDER BY
         -- casual DESC
 
 
--- Location data
--- Defining MIN and MAX values for latitude and longitude
-
-SELECT  
-        MAX(start_lat) AS start_lat_max,
-        MIN(start_lat) AS start_lat_min,
-        MAX(start_lng) AS start_lng_max,
-        MIN(start_lng) AS start_lng_min,
-        MAX(end_lat) AS end_lat_max,
-        MIN(end_lat) AS end_lat_min,
-        MAX(end_lng) AS end_lng_max,
-        MIN(end_lng) AS end_lng_min
-FROM
-        `cyclistic_Q1.quarterly_Q1`
 
