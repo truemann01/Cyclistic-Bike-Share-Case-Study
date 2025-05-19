@@ -3,7 +3,7 @@
 
 ## 🧭 Overview
 
-This project analyzes the 12-month ride history of Cyclistic, a bike-share company based in Chicago. Cyclistic’s long-term goal is to increase annual memberships by converting more casual riders into loyal, paying members. This project documents my end-to-end data journey using 12 months of historical ride data from 2024. From manual cleanup in Excel to building a cloud-based data pipeline in Google BigQuery, this project was a hands-on experience in real-world data wrangling and analysis..
+This project analyses the 12-month ride history of Cyclistic, a bike-share company based in Chicago. Cyclistic’s long-term goal is to increase annual memberships by converting more casual riders into loyal, paying members. This project documents my end-to-end data journey using 12 months of historical ride data from 2024. From manual cleanup in Excel to building a cloud-based data pipeline in Google BigQuery, this project was a hands-on experience in real-world data wrangling and analysis..
 
 ---
 
@@ -13,7 +13,7 @@ Working with data brings me joy — but more importantly, being able to transfor
 
 ## 📖 Scenario
 
-You are a Data analyst at Cyclistic, a bike-share company that operates in Chicago. The director of marketing believes that maximizing annual memberships is key to long-term profitability. She has tasked your team with understanding how casual riders use Cyclistic compared to members — and using this insight to inform a targeted marketing campaign.
+You are a Data analyst at Cyclistic, a bike-share company that operates in Chicago. The director of marketing believes that maximising annual memberships is key to long-term profitability. She has tasked your team with understanding how casual riders use Cyclistic compared to members — and using this insight to inform a targeted marketing campaign.
 
 ---
 
@@ -29,7 +29,7 @@ The question is:
 
 ## 🎯 Business Task
 
-- Analyze historical ride data (2024) to compare casual vs. member usage patterns.
+- Analyse historical ride data (2024) to compare casual vs. member usage patterns.
 - Identify key behavioral differences that could inform marketing strategies.
 - Recommend tactics to encourage more casual riders to become members.
 
