@@ -214,6 +214,9 @@ I created a virtual environment for my project, install all the necessary librar
 🔗 [Click here to view the Visualisation images](visualisation/)
 
 
+Next : I will be writing a comprehensive report showcasing, problem, insights, use case and recommendations. 
+I'm open for colloboration and contributions. 
+
 
 ## 🚀 Thanks for reading!
 Want to connect or collaborate? Let’s chat on <a href="https://www.linkedin.com/in/anderson-igbah?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">LinkedIn</a> 
