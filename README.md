@@ -1,9 +1,9 @@
-# Cyclistic-Bike-Share-Case-Study
+# Cyclistic-Bike-Share-Project
 
 
 ## 🧭 Overview
 
-This case study analyzes the 12-month ride history of Cyclistic, a fictional bike-share company based in Chicago. Cyclistic’s long-term goal is to increase annual memberships by converting more casual riders into loyal, paying members. This case study documents my end-to-end data journey using 12 months of historical ride data from 2024. From manual cleanup in Excel to building a cloud-based data pipeline in Google BigQuery, this project was a hands-on experience in real-world data wrangling and analysis..
+This project analyzes the 12-month ride history of Cyclistic, a bike-share company based in Chicago. Cyclistic’s long-term goal is to increase annual memberships by converting more casual riders into loyal, paying members. This project documents my end-to-end data journey using 12 months of historical ride data from 2024. From manual cleanup in Excel to building a cloud-based data pipeline in Google BigQuery, this project was a hands-on experience in real-world data wrangling and analysis..
 
 ---
 
@@ -13,7 +13,7 @@ Working with data brings me joy — but more importantly, being able to transfor
 
 ## 📖 Scenario
 
-You are a data analyst at Cyclistic, a bike-share company that operates in Chicago. The director of marketing believes that maximizing annual memberships is key to long-term profitability. She has tasked your team with understanding how casual riders use Cyclistic compared to members — and using this insight to inform a targeted marketing campaign.
+You are a Data analyst at Cyclistic, a bike-share company that operates in Chicago. The director of marketing believes that maximizing annual memberships is key to long-term profitability. She has tasked your team with understanding how casual riders use Cyclistic compared to members — and using this insight to inform a targeted marketing campaign.
 
 ---
 
