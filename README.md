@@ -195,8 +195,22 @@ After cleaning and merging all quarterly datasets, I conducted a comprehensive f
 ## Conclusion 
 This project pushed me to not only clean and organize messy datasets, but also navigate schema challenges in BigQuery, research real-time fixes, and build a full SQL-based analysis pipeline from scratch.
 
-Next: Building compelling dashboards and storytelling from this clean data foundation.
-I'm open for collaborations. 
+
+# Visualisation Using Python 
+
+## Tools used 
+ - Python
+ - VS code studio
+ - jupyter Notebook
+ - Bash
+
+I created a virtual environment for my project, install all the necessary libraries, 
+
+- pandas
+- matplotlib
+- seaborn
+- Plotly
+
 
 
 ## 🚀 Thanks for reading!
